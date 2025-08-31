@@ -1,0 +1,15 @@
+#userInterface{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+}
+
+#perfil{
+    background-color: gray;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    box-shadow: 0px 5px 0px lightgray;
+}

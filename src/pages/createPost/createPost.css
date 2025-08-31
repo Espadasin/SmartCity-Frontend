@@ -1,0 +1,58 @@
+
+#postForm{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+#postForm>input[type = 'text'], textarea{
+    border-radius: 20px;
+    border: 1px black solid;
+    padding: 5px;
+}
+
+#postForm>input[type = 'text']:focus, textarea{
+    outline: none;
+}
+
+#postForm>#commentary{
+    border-radius: 20px;
+    border: 1px black solid;
+    width: 300px;
+    height: 140px;
+    overflow: hidden;
+}
+
+#errors{
+    color: red;
+    font-size: 15px;
+}
+
+#postForm>label{
+    text-align: center;
+    font-size: 15px;
+    position: relative;
+    background-color: white;
+    width: 80px;
+    top: 10px;
+}
+
+#postForm>button[type = 'submit']{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    width: 100px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.backButton{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    width: 50px;
+}
