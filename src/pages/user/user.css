@@ -3,7 +3,36 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    flex-flow: column;
     text-align: center;
+}
+
+#userInterface>#backButton{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+#userInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+    gap: 10px;
+}
+
+#logout{
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#email{
+    opacity: 50%;
 }
 
 #perfil{

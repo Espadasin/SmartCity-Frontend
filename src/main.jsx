@@ -62,7 +62,7 @@ function App(){
     },
     {
       path: "/user",
-      element: isLogged ?  <User userData={userData} /> : <Navigate to="/login" />
+      element: isLogged ?  <User userData={userData} setIsLogged={setIsLogged} /> : <Navigate to="/login" />
     }
   ]);
 

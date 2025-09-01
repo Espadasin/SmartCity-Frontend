@@ -5,7 +5,7 @@ import db from "../../services/db";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-function User({ userData }){
+function User({ userData, setIsLogged }){
     let [user, setUser] = useState();
     let navigate = useNavigate()
 
@@ -14,6 +14,12 @@ function User({ userData }){
 
         setUser(response.data)
     };
+
+    function logout(){
+        localStorage.removeItem('token');
+        setIsLogged(false);
+        navigate('/login');
+    }
 
     useEffect(() => {
         getCurrentUser();
@@ -24,11 +30,13 @@ function User({ userData }){
             
             <section id="userInterface">
                 
-                <button id="backButton" onClick={() => {navigate('/')}}><ArrowLeft color="gray"/></button>
+                <button id="backButton" onClick={() => {navigate('/')}}><ArrowLeft color="black"/></button>
                 <section id="userInfo">
                     <div id="perfil"></div>
                     <h1>{user ? user['nickname'] : 'Guest'}</h1>
+                    <p id='email'>{user ? user['email'] : ''}</p>
                 </section>
+                <button id="logout" onClick={logout}>Logout</button>
 
             </section>
 

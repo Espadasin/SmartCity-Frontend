@@ -9,20 +9,13 @@ import db from "../../services/db.js";
 
 import MapComponent from "../../components/map.jsx";
 
-function Main({ setIsLogged }) {
+function Main() {
     let navigate = useNavigate()
-
-    function logout(){
-        localStorage.removeItem('token');
-        setIsLogged(false);
-        navigate('/login');
-    }
 
     return (
         <main id="main">
 
             <nav id="navbar">
-                <button id="backButton" onClick={logout}><ArrowLeft color="gray"/></button>
                 <img src={title}  alt="title"/>
                 <button id="userButton" onClick={() => {navigate('/user')}}><LiaUserCircle color="gray" size={30}/></button>
             </nav>
