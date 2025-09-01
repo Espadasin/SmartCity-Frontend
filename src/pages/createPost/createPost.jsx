@@ -14,6 +14,23 @@ function CreatePost(){
     let [errors, setErrors] = useState([])
     let navigate = useNavigate()
 
+    function getLocation(){
+        if("geolocation" in navigator){
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position)
+                setComment(prev => ({
+                    ...prev,
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                }))
+            }, (error) => {
+                console.log(error)
+            });
+        }else{
+            console.log('Permission Denied')
+        }
+    }
+
     async function postComment(e){
         e.preventDefault();
 
@@ -24,13 +41,16 @@ function CreatePost(){
             type : comment.type
         };
 
-        let response = await db.post('/postFeedback', data);
+        getLocation();
 
-        if(response.data.errors && response.data.errors.length > 0){
-            setErrors(response.data.errors);
-        }else{
-            navigate('/');
-        }
+        // let response = await db.post('/postFeedback', data);
+        console.log(data)
+
+        // if(response.data.errors && response.data.errors.length > 0){
+        //     setErrors(response.data.errors);
+        // }else{
+        //     navigate('/');
+        // }
 
         
     }
@@ -43,7 +63,11 @@ function CreatePost(){
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude
                 }))
+            }, (error) => {
+                console.log(error)
             });
+        }else{
+            console.log('Permission Denied')
         }
     }, []);
 
