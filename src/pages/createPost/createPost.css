@@ -1,4 +1,8 @@
 
+.hidden{
+    display: none;
+}
+
 #postForm{
     display: flex;
     flex-flow: column wrap;
@@ -15,6 +19,11 @@
 
 #postForm>input[type = 'text']:focus, textarea{
     outline: none;
+}
+
+#postForm>#Street{
+    margin-top: 20px;
+    text-align: center;
 }
 
 #postForm>#commentary{
