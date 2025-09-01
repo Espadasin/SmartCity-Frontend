@@ -17,7 +17,6 @@ function CreatePost(){
     function getLocation(){
         if("geolocation" in navigator){
             navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position)
                 setComment(prev => ({
                     ...prev,
                     latitude: position.coords.latitude,
@@ -43,14 +42,13 @@ function CreatePost(){
 
         getLocation();
 
-        // let response = await db.post('/postFeedback', data);
-        console.log(data)
+        let response = await db.post('/postFeedback', data);
 
-        // if(response.data.errors && response.data.errors.length > 0){
-        //     setErrors(response.data.errors);
-        // }else{
-        //     navigate('/');
-        // }
+        if(response.data.errors && response.data.errors.length > 0){
+            setErrors(response.data.errors);
+        }else{
+            navigate('/');
+        }
 
         
     }
