@@ -143,3 +143,37 @@ img{
     font-size: 15px;
     color: black;
 }
+
+@media (min-width: 320px) and (max-width: 480px){
+    #navbar{
+        display: flex;
+        padding: 30px;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    #main{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;    
+        margin: 50px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    #navbar{
+        display: flex;
+        padding: 30px;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    #main{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;    
+        margin: 50px;
+    } 
+}
