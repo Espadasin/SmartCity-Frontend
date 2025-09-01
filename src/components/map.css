@@ -15,3 +15,29 @@
     justify-content: center;
     pointer-events: auto;
 }
+
+@media (min-width: 320px) and (max-width: 480px){
+    .mapContainer{
+    position: relative;
+    bottom: 50px;
+    display: flex;
+    height: 60vh;
+    width: 80vw;
+    z-index: 0;
+    justify-content: center;
+    border-radius: 8px;
+}
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+    .mapContainer{
+        position: relative;
+        bottom: 50px;
+        display: flex;
+        height: 60vh;
+        width: 90vw;
+        z-index: 0;
+        justify-content: center;
+        border-radius: 8px;
+    }
+}
