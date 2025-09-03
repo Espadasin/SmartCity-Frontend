@@ -5,7 +5,13 @@ import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router';
 import db from '../../services/db.js';
 import { renderToString } from 'react-dom/server'   
-import { MapPin, MapPinPlusInside } from 'lucide-react';
+import { MapPin, 
+    MapPinPlusInside, 
+    SmartphoneCharging, 
+    Building2, 
+    ShieldQuestionMark, 
+    DropletOff 
+} from 'lucide-react';
 
 
 function LocationMarker({ addingMarker, onMarkerPlaced }){
@@ -17,6 +23,7 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
     });
     const [position, setPosition] = useState(null);
     const [comment, setComment] = useState("");
+    const [type, setType] = useState("Geral");
     const popupRef = useRef();
 
     useMapEvents({
@@ -40,6 +47,7 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
             latitude: position.lat,
             longitude: position.lng,
             commentary: comment,
+            type: type
         });
         navigate(0);
         setComment("");
@@ -55,6 +63,14 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
                     onChange={(e) => setComment(e.target.value)}
                     rows={3}
                 />
+                <label htmlFor="type">Tipo do Problema</label>
+                <select onChange={(e) => setType(e.target.value)} name="type" id="type" placeholder="Tipo do Problema">
+                    <option value="Geral">Geral</option>
+                    <option value="Energia">Energia</option>
+                    <option value="Infraestrutura">Infraestrutura</option>
+                    <option value="Segurança">Segurança</option>
+                    <option value="Saneamento">Saneamento</option>
+                </select>
                 <button  onClick={handleSave}>Save</button>
             </div>
         </Popup>
@@ -64,11 +80,33 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
 
 function MapComponent({ addingMarker }) {
     const position = [-16.6478, -49.4981];
-    const userCustomIcon = new L.DivIcon({
-        className: 'markerIcon',
-        html: renderToString(<MapPin fill='red' color='white'/>),
-        iconSize: [32, 32]
-    })
+    const userTypeIcons = {
+        "Geral": new L.DivIcon({
+            className: 'markerIcon',
+            html: renderToString(<MapPin fill='red' color='black'/>),
+            iconSize: [32, 32]
+        }),
+        "Energia": new L.DivIcon({
+            className: 'markerIcon',
+            html: renderToString(<SmartphoneCharging fill='lightyellow' color='black'/>),
+            iconSize: [32, 32]
+        }),
+        "Infraestrutura": new L.DivIcon({
+            className: 'markerIcon',
+            html: renderToString(<Building2 fill='lightgreen' color='black'/>),
+            iconSize: [32, 32]
+        }),
+        "Segurança": new L.DivIcon({
+            className: 'markerIcon',
+            html: renderToString(<ShieldQuestionMark fill='lightblue' color='black'/>),
+            iconSize: [32, 32]
+        }),
+        "Saneamento": new L.DivIcon({
+            className: 'markerIcon',
+            html: renderToString(<DropletOff fill='lightblue' color='black'/>),
+            iconSize: [32, 32]
+        })
+    }
     let [data, setData] = useState([]);
 
     async function getFeedbacks(){
@@ -97,7 +135,7 @@ function MapComponent({ addingMarker }) {
 
                 
                 {data.map((item, index) => (
-                    <Marker key={index} icon={userCustomIcon} position={[item.latitude, item.longitude]}>
+                    <Marker key={index} icon={userTypeIcons[item.type]} position={[item.latitude, item.longitude]}>
                         <Popup>
                             {item.commentary}
                         </Popup>
