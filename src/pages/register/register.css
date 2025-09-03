@@ -34,3 +34,9 @@
     box-shadow: 0px 5px 0px lightgray;
     cursor: pointer;
 }
+
+.backButton{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}

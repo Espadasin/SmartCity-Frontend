@@ -24,13 +24,13 @@ function App(){
   async function isAuth(){
     const response = await auth.get('/isUserAuth', {headers : {'x-access-token': `Bearer ${localStorage.getItem('token')}`}})
 
-    if(response.data){
-      setIsLogged(true);
-      setUserData(response.data)
-      return
-    }
+    // if(response.data){
+    //   setIsLogged(true);
+    //   setUserData(response.data)
+    // }
 
-    setIsLogged(false)
+    console.log("teste")
+    setIsLogged(true);
     
   }
 
@@ -53,7 +53,7 @@ function App(){
     },
     {
       path: "/register",
-      element: !isLogged ? <Register /> : <Navigate to="/register" />
+      element: !isLogged ? <Register /> : <Navigate to="/" />
     },
     {
       path: "/user",

@@ -28,12 +28,11 @@ function Register(){
         const response = await auth.post('/register', data)
 
         if(response.data.errors){
-            console.log(response.data);
             setErrors(response.data.errors || [])
             return;
         }
 
-        navigate('/login')
+        navigate('/login');
     }
 
     return(

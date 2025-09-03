@@ -131,7 +131,7 @@ function MapComponent({ addingMarker }) {
 
     return (
         <div>
-            <MapContainer className='mapContainer' center={position} zoom={13} minZoom={13} zoomControl={true} dragging={true} scrollWheelZoom={false}>
+            <MapContainer className='mapContainer' center={position} zoom={13} minZoom={12} zoomControl={true} dragging={true} scrollWheelZoom={false}>
                 
                 
                 <TileLayer
@@ -141,7 +141,6 @@ function MapComponent({ addingMarker }) {
 
                 
                 {data.map((item, index) => (
-                    console.log(item),
                     <Marker key={index} icon={userTypeIcons[item.type]} position={[item.latitude, item.longitude]}>
                         <Popup>
                             {item.commentary}

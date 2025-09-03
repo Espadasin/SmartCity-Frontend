@@ -1,7 +1,7 @@
 import "./home.css";
 import { LiaUserCircle } from "react-icons/lia";
 import { useNavigate } from "react-router";
-import { ArrowLeft, Megaphone, ChartNoAxesCombined, Plus } from "lucide-react";
+import { ArrowLeft, Megaphone, ChartNoAxesCombined, Info } from "lucide-react";
 import { useEffect, useState } from "react";
 import Login from "../login/login.jsx";
 import title from "../../assets/title.png"
@@ -23,11 +23,13 @@ function Main() {
 
             <MapComponent addingMarker={addingMarker} />
 
+            <p>Clique no botão "Reportar problema" para adicionar um novo marcador.</p>
+        
             <section id="actions">
                     <button id="createFeedbackButton" onClick={() => setAddingMarker(true)}><Megaphone color="#0088cc" /> Reportar <br /> problema</button>
                     <div id="moreButtons">
                         <button id="chartButton"><ChartNoAxesCombined /></button>
-                        <button><Plus /></button>
+                        <button id="infoButton"><Info /></button>
                     </div>
             </section>
 
