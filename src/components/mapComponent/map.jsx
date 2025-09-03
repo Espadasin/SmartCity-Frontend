@@ -80,6 +80,12 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
 
 function MapComponent({ addingMarker }) {
     const position = [-16.6478, -49.4981];
+    const userIcon = new L.DivIcon({
+        className: 'userIcon',
+        html: renderToString(<MapPin fill='red' color='white'/>),
+        iconSize: [32, 32]
+    });
+
     const userTypeIcons = {
         Geral: new L.DivIcon({
             className: 'markerIcon',
@@ -135,7 +141,7 @@ function MapComponent({ addingMarker }) {
 
                 
                 {data.map((item, index) => (
-                    <Marker key={index} icon={userTypeIcons[item.type]} position={[item.latitude, item.longitude]}>
+                    <Marker key={index} icon={userIcon} position={[item.latitude, item.longitude]}>
                         <Popup>
                             {item.commentary}
                         </Popup>
