@@ -81,27 +81,27 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
 function MapComponent({ addingMarker }) {
     const position = [-16.6478, -49.4981];
     const userTypeIcons = {
-        "Geral": new L.DivIcon({
+        Geral: new L.DivIcon({
             className: 'markerIcon',
             html: renderToString(<MapPin fill='red' color='black'/>),
             iconSize: [32, 32]
         }),
-        "Energia": new L.DivIcon({
+        Energia: new L.DivIcon({
             className: 'markerIcon',
             html: renderToString(<SmartphoneCharging fill='lightyellow' color='black'/>),
             iconSize: [32, 32]
         }),
-        "Infraestrutura": new L.DivIcon({
+        Infraestrutura: new L.DivIcon({
             className: 'markerIcon',
             html: renderToString(<Building2 fill='lightgreen' color='black'/>),
             iconSize: [32, 32]
         }),
-        "Segurança": new L.DivIcon({
+        Segurança: new L.DivIcon({
             className: 'markerIcon',
             html: renderToString(<ShieldQuestionMark fill='lightblue' color='black'/>),
             iconSize: [32, 32]
         }),
-        "Saneamento": new L.DivIcon({
+        Saneamento: new L.DivIcon({
             className: 'markerIcon',
             html: renderToString(<DropletOff fill='lightblue' color='black'/>),
             iconSize: [32, 32]
