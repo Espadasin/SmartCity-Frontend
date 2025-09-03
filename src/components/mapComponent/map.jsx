@@ -42,14 +42,16 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
         }
     }, [position]);
 
+    let data = {
+        latitude: position.lat,
+        longitude: position.lng,
+        commentary: comment,
+        type: type
+    }
+
     const handleSave = async () => {
         if (!position || !comment) return alert("Preencha todos os campos.");
-        await db.post("/postComment", {
-            latitude: position.lat,
-            longitude: position.lng,
-            commentary: comment,
-            type: type
-        });
+        await db.post("/postComment", data);
         navigate(0);
         setComment("");
     };
@@ -136,7 +138,7 @@ function MapComponent({ addingMarker }) {
 
                 
                 {data.map((item, index) => (
-                    <Marker key={index} icon={`${userTypeIcons[item.type]}`} position={[item.latitude, item.longitude]}>
+                    <Marker key={index} icon={userTypeIcons[item.type]} position={[item.latitude, item.longitude]}>
                         <Popup>
                             {item.commentary}
                         </Popup>
