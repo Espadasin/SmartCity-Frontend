@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 let auth = axios.create({
-    baseURL: 'http://localhost:8084/auth'
+    baseURL: 'https://smartcity-backend.up.railway.app/auth'
 });
 
 
