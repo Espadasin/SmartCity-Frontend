@@ -31,7 +31,6 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
             if (addingMarker) {
                 setPosition(e.latlng);
                 onMarkerPlaced();
-                console.log(type);
             }
         },
     });
@@ -42,16 +41,14 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
         }
     }, [position]);
 
-    let data = {
-        latitude: position.lat,
-        longitude: position.lng,
-        commentary: comment,
-        type: type
-    }
-
     const handleSave = async () => {
         if (!position || !comment) return alert("Preencha todos os campos.");
-        await db.post("/postComment", data);
+        await db.post("/postComment", {
+            latitude: position.lat,
+            longitude: position.lng,
+            commentary: comment,
+            type: type
+        });
         navigate(0);
         setComment("");
     };
