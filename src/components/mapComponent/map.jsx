@@ -144,7 +144,7 @@ function MapComponent({ addingMarker }) {
 
                 <LocationMarker 
                     addingMarker={addingMarker}
-                    onMarkerPlaced={() => console.log("Marker placed")}
+                    onMarkerPlaced={() => console.log(type)}
                 />
 
             </MapContainer>
