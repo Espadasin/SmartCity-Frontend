@@ -31,6 +31,7 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
             if (addingMarker) {
                 setPosition(e.latlng);
                 onMarkerPlaced();
+                console.log(type);
             }
         },
     });
@@ -135,7 +136,7 @@ function MapComponent({ addingMarker }) {
 
                 
                 {data.map((item, index) => (
-                    <Marker key={index} icon={userTypeIcons["Geral"]} position={[item.latitude, item.longitude]}>
+                    <Marker key={index} icon={userTypeIcons[item.type]} position={[item.latitude, item.longitude]}>
                         <Popup>
                             {item.commentary}
                         </Popup>
@@ -144,7 +145,7 @@ function MapComponent({ addingMarker }) {
 
                 <LocationMarker 
                     addingMarker={addingMarker}
-                    onMarkerPlaced={() => console.log(type)}
+                    onMarkerPlaced={() => console.log("Marker placed")}
                 />
 
             </MapContainer>
