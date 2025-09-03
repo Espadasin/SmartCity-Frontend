@@ -16,6 +16,33 @@
     pointer-events: auto;
 }
 
+.markerPopup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.markerPopup>textarea{
+    width: 150px;
+    height: 100px;
+    resize: none;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid gray;
+}
+
+.markerPopup>button{
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 @media (min-width: 320px) and (max-width: 480px){
     .mapContainer{
     position: relative;

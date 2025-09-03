@@ -7,9 +7,10 @@ import Login from "../login/login.jsx";
 import title from "../../assets/title.png"
 import db from "../../services/db.js";
 
-import MapComponent from "../../components/map.jsx";
+import MapComponent from "../../components/mapComponent/map.jsx";
 
 function Main() {
+    const [addingMarker, setAddingMarker] = useState(false);
     let navigate = useNavigate()
 
     return (
@@ -20,10 +21,10 @@ function Main() {
                 <button id="userButton" onClick={() => {navigate('/user')}}><LiaUserCircle color="gray" size={30}/></button>
             </nav>
 
-            <MapComponent />
+            <MapComponent addingMarker={addingMarker} />
 
             <section id="actions">
-                    <button id="createFeedbackButton" onClick={() => navigate('/createFeedback')}><Megaphone color="#0088cc" /> Reportar <br /> problema</button>
+                    <button id="createFeedbackButton" onClick={() => setAddingMarker(true)}><Megaphone color="#0088cc" /> Reportar <br /> problema</button>
                     <div id="moreButtons">
                         <button id="chartButton"><ChartNoAxesCombined /></button>
                         <button><Plus /></button>

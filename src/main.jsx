@@ -11,7 +11,6 @@ import auth from "./services/auth.js";
 
 //Import Pages
 import Main from "./pages/home/home.jsx";
-import CreatePost from "./pages/createPost/createPost.jsx";
 import Feedback from "./pages/feedback/feedback.jsx";
 import Login from "./pages/login/login.jsx";
 import Register from "./pages/register/register.jsx";
@@ -51,10 +50,6 @@ function App(){
     {
       path: "/feedback",
       element: isLogged ?  <Main isLogged={isLogged} /> : <Navigate to="/login" />
-    },
-    {
-      path: "/createFeedback",
-      element: isLogged ?  <CreatePost /> : <Navigate to="/login" />
     },
     {
       path: "/register",
