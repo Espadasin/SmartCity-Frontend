@@ -141,6 +141,7 @@ function MapComponent({ addingMarker }) {
 
                 
                 {data.map((item, index) => (
+                    console.log(item),
                     <Marker key={index} icon={userIcon} position={[item.latitude, item.longitude]}>
                         <Popup>
                             {item.commentary}
