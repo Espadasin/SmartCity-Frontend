@@ -16,6 +16,14 @@
     pointer-events: auto;
 }
 
+.popup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
 .markerPopup{
     display: flex;
     flex-direction: column;

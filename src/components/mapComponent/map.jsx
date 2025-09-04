@@ -3,7 +3,6 @@ import "leaflet/dist/leaflet.css";
 import "./map.css"
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router';
-import db from '../../services/db.js';
 import { renderToString } from 'react-dom/server'   
 import { MapPin, 
     MapPinPlusInside, 
@@ -12,6 +11,9 @@ import { MapPin,
     ShieldQuestionMark, 
     DropletOff 
 } from 'lucide-react';
+
+import db from '../../services/db.js';
+import location from '../../services/map.js';
 
 
 function LocationMarker({ addingMarker, onMarkerPlaced }){
@@ -142,8 +144,11 @@ function MapComponent({ addingMarker }) {
                 
                 {data.map((item, index) => (
                     <Marker key={index} icon={userTypeIcons[item.type]} position={[item.latitude, item.longitude]}>
-                        <Popup>
-                            {item.commentary}
+                        <Popup >
+                            <div className='popup'>
+                                {item.solved ? <span style={{color: 'green', fontWeight: 'bold'}}>RESOLVIDO</span> : <span style={{color: 'red', fontWeight: 'bold'}}>PENDENTE</span>}
+                                {item.commentary}   
+                            </div>
                         </Popup>
                     </Marker>
                 ))}

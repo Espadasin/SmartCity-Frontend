@@ -55,7 +55,7 @@ function Admin(){
 
     return (
         <main id="main">
-            <button id='backButton' onClick={() => navigate('/')}><ArrowLeft /></button>
+            <button id='backButton' onClick={() => navigate('/map')}><ArrowLeft /></button>
             <select name="filter" id="filter" onChange={(e) => setFilter(e.target.value)}>
                 <option value="Todas">Todas</option>
                 <option value="Resolvidos">Resolvidos</option>
