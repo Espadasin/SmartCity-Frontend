@@ -35,13 +35,6 @@ function Login({setIsLogged, isAuth, userData}){
         navigate('/admin')
     }
 
-    useEffect(() => {
-        if(localStorage.getItem('token')){
-            setIsLogged(true);
-            navigate('/admin')
-        }
-    }, [])
-
     return(
         <main id="main">
 

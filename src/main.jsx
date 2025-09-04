@@ -14,7 +14,6 @@ import Map from "./pages/map/map.jsx";
 import Home from "./pages/home/home.jsx";
 import Admin from "./pages/admin/admin.jsx";
 import Login from "./pages/login/login.jsx";
-import Register from "./pages/register/register.jsx";
 //
 
 function App(){
@@ -45,10 +44,6 @@ function App(){
     {
       path: "/loginAdmin",
       element: <Login setIsLogged={setIsLogged} isAuth={isAuth} /> 
-    },
-    {
-      path: "/registerAdmin",
-      element: <Register /> 
     },
     {
       path: "/admin",
