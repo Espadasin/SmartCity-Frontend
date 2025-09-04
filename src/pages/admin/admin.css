@@ -1,0 +1,51 @@
+#feedbackItem{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 5px;
+    width: 300px;
+    flex-flow: column wrap;
+    padding: 10px;
+}
+
+
+#info{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 5px;
+}
+
+#feedbackItem>button{
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#backButton{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+#solvedButton{
+    background-color: green;
+}
+
+#deleteButton{
+    background-color: red;
+}
+
+#solvedButton:hover{
+    background-color: darkgreen;
+}
+
+#deleteButton:hover{
+    background-color: darkred;
+}

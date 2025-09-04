@@ -1,8 +1,3 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-
 #main{
     display: flex;
     flex-flow: column wrap;
@@ -11,182 +6,34 @@
     margin: 50px;
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
-}
-
-a{
-    cursor: pointer;
-}
-
-img{
+#logo{
+    animation: pop-in 0.5s ease forwards;
     user-select: none;
     pointer-events: none;
 }
 
-p{
-    font-size: 20px;
-    color: black;
-    font-weight: bold;
-    text-align: center;
-}
-
-#navbar{
-    display: flex;
-    padding: 30px;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-#navbar>img{
-    width: 200px;
-}
-
-#navbar>button{
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-}
-
-#actions{
-    position: relative;
+#welcomeBox{
+    animation: pop-in 0.5s ease forwards;
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-evenly;
     align-items: center;
-    gap: 10px;
-    bottom: 200px;  
-    z-index: 1;
-}
-
-#actions>button{
-    background: white;
-    border: 1px solid lightgray;
-    cursor: pointer;
-    position: relative;
-    border-radius: 9px;
-    padding: 10px;
-    box-shadow: 0px 5px 0px lightgray;
-    text-align: center;
-    font-weight: bold;
-}
-
-#moreButtons{
-    display: flex;
-    flex-flow: row wrap;
-    gap: 10px;
-}
-
-#moreButtons>button{
-    background: none;
-    border: 1px solid lightgray;
-    background-color: white;
-    cursor: pointer;
-    position: relative;
-    border-radius: 9px;
-    padding: 10px;
-    box-shadow: 0px 5px 0px lightgray;
-    text-align: center;
-    font-weight: bold;
-}
-
-#createFeedbackButton{
-    display: flex;
-    width: 150px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#page{
-    text-align: center;
-}
-
-.buttons{
-    display: flex;
-    flex-flow: row wrap;
-}
-
-.Interface:hover{
-    cursor: pointer;
-}
-
-#links>ul{
-    display: flex;
-    list-style: none;
+    justify-content: center;
+    margin-bottom: 30px;
     gap: 20px;
 }
 
-#links>ul>li>a{
-    text-decoration: none;
-    color: black;
+#welcomeBox>button{
+    border: none;
+    background-color: #0088cc;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
 }
 
-#links>ul>li>a:hover{
-    text-transform: uppercase;
-}
-
-.Interface{
-    display: flex;
-    flex-flow: column wrap;
-    padding: 20px;
-    text-align: center;
-    gap: 5px;
-    background-color: white;
-    border-radius: 20px;
-    margin-top: 25px;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
-    margin-left: 20px;
-    flex-flow: column wrap;
-    border: 1px solid black;
-}
-
-#userTag{
-    opacity: 50%;
-    font-size: 15px;
-    color: black;
-}
-
-@media (min-width: 320px) and (max-width: 480px){
-    #navbar{
-        display: flex;
-        padding: 30px;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: center;
-    }
-    #main{
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        justify-content: center;    
-        margin: 50px;
-    }
-    #actions{
-        bottom: 280px; 
-    }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    #navbar{
-        display: flex;
-        padding: 30px;
-        flex-flow: row nowrap;
-        justify-content: center;
-        align-items: center;
-    }
-    #main{
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        justify-content: center;    
-        margin: 50px;
-    } 
-    #actions{
-        bottom: 280px; 
-    }
+@keyframes pop-in{
+  0%   { transform: translateY(6px) scale(.96); opacity: 0; }
+  60%  { transform: translateY(-2px) scale(1.015); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }

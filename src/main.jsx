@@ -10,11 +10,11 @@ import auth from "./services/auth.js";
 //
 
 //Import Pages
-import Main from "./pages/home/home.jsx";
-import Feedback from "./pages/feedback/feedback.jsx";
+import Map from "./pages/map/map.jsx";
+import Home from "./pages/home/home.jsx";
+import Admin from "./pages/admin/admin.jsx";
 import Login from "./pages/login/login.jsx";
 import Register from "./pages/register/register.jsx";
-import User from "./pages/user/user.jsx";
 //
 
 function App(){
@@ -29,35 +29,30 @@ function App(){
     //   setUserData(response.data)
     // }
 
-    console.log("teste")
     setIsLogged(true);
     
   }
 
-  useEffect(() => {
-    isAuth();
-  }, []);
-
   const router = createBrowserRouter([
     {
       path: "/",
-      element: isLogged ?  <Main setIsLogged={setIsLogged} /> : <Navigate to="/login" />
+      element: <Home />
     },
     {
-      path: "/login",
-      element: !isLogged ? <Login setIsLogged={setIsLogged} /> : <Navigate to="/" />
+      path: "/map",
+      element: <Map />
     },
     {
-      path: "/feedback",
-      element: isLogged ?  <Main isLogged={isLogged} /> : <Navigate to="/login" />
+      path: "/loginAdmin",
+      element: <Login setIsLogged={setIsLogged} isAuth={isAuth} /> 
     },
     {
-      path: "/register",
-      element: !isLogged ? <Register /> : <Navigate to="/" />
+      path: "/registerAdmin",
+      element: <Register /> 
     },
     {
-      path: "/user",
-      element: isLogged ?  <User userData={userData} setIsLogged={setIsLogged} /> : <Navigate to="/login" />
+      path: "/admin",
+      element: isLogged ? <Admin /> : <Navigate to="/loginAdmin" />
     }
   ]);
 

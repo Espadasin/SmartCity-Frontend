@@ -1,41 +1,18 @@
 import "./home.css";
-import { LiaUserCircle } from "react-icons/lia";
 import { useNavigate } from "react-router";
-import { ArrowLeft, Megaphone, ChartNoAxesCombined, Info } from "lucide-react";
-import { useEffect, useState } from "react";
-import Login from "../login/login.jsx";
-import title from "../../assets/title.png"
-import db from "../../services/db.js";
+import logo from "../../assets/logo.png"
 
-import MapComponent from "../../components/mapComponent/map.jsx";
-
-function Main() {
-    const [addingMarker, setAddingMarker] = useState(false);
+function Home(){
     let navigate = useNavigate()
 
-    return (
+    return(
         <main id="main">
-
-            <nav id="navbar">
-                <img src={title}  alt="title"/>
-                <button id="userButton" onClick={() => {navigate('/user')}}><LiaUserCircle color="gray" size={30}/></button>
-            </nav>
-
-            <MapComponent addingMarker={addingMarker} />
-
-            <p>Clique no botão "Reportar problema" para adicionar um novo marcador.</p>
-        
-            <section id="actions">
-                    <button id="createFeedbackButton" onClick={() => setAddingMarker(true)}><Megaphone color="#0088cc" /> Reportar <br /> problema</button>
-                    <div id="moreButtons">
-                        <button id="chartButton"><ChartNoAxesCombined /></button>
-                        <button id="infoButton"><Info /></button>
-                    </div>
-            </section>
-
-
+            <div id="welcomeBox">
+                <img id="logo" src={logo} width={300} alt="Logo" />
+                <button onClick={() => {navigate("/map")}}>Começar</button>
+            </div>
         </main>
     );
 }
 
-export default Main;
+export default Home;

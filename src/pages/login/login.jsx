@@ -1,12 +1,13 @@
 import "./login.css"
-import { FcGoogle } from "react-icons/fc";
+import { ArrowLeft } from "lucide-react";
 import { data, useNavigate } from "react-router";
 import { useState } from "react";
 import auth from "../../services/auth";
 import logo from "../../assets/logo.png"
 import { useEffect } from "react";
+import { use } from "react";
 
-function Login({setIsLogged}){
+function Login({setIsLogged, isAuth, userData}){
     let navigate = useNavigate();
     let [errors, setErrors] = useState([]);
     let [loginParams, setLoginParams] = useState({
@@ -31,16 +32,15 @@ function Login({setIsLogged}){
 
         setIsLogged(true);
         localStorage.setItem('token', response.data);
-        navigate('/')
+        navigate('/admin')
     }
 
-    async function handleGoogleAuth(e) {
-        e.preventDefault();
-
-        const response = await auth.post('/google-auth');
-
-        return response;
-    }
+    useEffect(() => {
+        if(localStorage.getItem('token')){
+            setIsLogged(true);
+            navigate('/admin')
+        }
+    }, [])
 
     return(
         <main id="main">
@@ -58,12 +58,7 @@ function Login({setIsLogged}){
                 </form>
 
                 <div id="accountButtons">
-                    <button id="registerButton" onClick={() => {navigate("/register")}}>Criar conta</button>
-                    <button id="guestButton" onClick={() => {navigate("/"); setIsLogged(true)}} >Entrar como visitante</button>
-                </div>
-
-                <div id="alternativeButtons">
-                        <button id="googleButton" onClick={handleGoogleAuth}> <FcGoogle size={20} /> Entrar com Google</button>
+                    <button id="backButton" onClick={() => {navigate("/map")}}><ArrowLeft /></button>
                 </div>
 
                 <div id="errors">
