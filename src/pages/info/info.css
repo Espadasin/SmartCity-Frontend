@@ -1,0 +1,20 @@
+#infoHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-flow: column;
+    text-align: center;
+    margin: 20px;
+    color: #0088cc;
+}
+
+#infoHeader>h1{
+    margin-bottom: 10px;
+}
+
+#infoHeader>p{
+    color: #0088cc;
+    text-align: left;
+    font-size: 20px;
+}

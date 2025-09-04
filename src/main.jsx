@@ -14,23 +14,11 @@ import Map from "./pages/map/map.jsx";
 import Home from "./pages/home/home.jsx";
 import Admin from "./pages/admin/admin.jsx";
 import Login from "./pages/login/login.jsx";
+import Info from "./pages/info/info.jsx";
 //
 
 function App(){
   let [isLogged, setIsLogged] = useState(false);
-  let [userData, setUserData] = useState({})
-
-  async function isAuth(){
-    const response = await auth.get('/isUserAuth', {headers : {'x-access-token': `Bearer ${localStorage.getItem('token')}`}})
-
-    // if(response.data){
-    //   setIsLogged(true);
-    //   setUserData(response.data)
-    // }
-
-    setIsLogged(true);
-    
-  }
 
   const router = createBrowserRouter([
     {
@@ -42,13 +30,17 @@ function App(){
       element: <Map />
     },
     {
+      path: "/info",
+      element: <Info />
+    },
+    {
       path: "/loginAdmin",
-      element: <Login setIsLogged={setIsLogged} isAuth={isAuth} /> 
+      element: <Login setIsLogged={setIsLogged}/> 
     },
     {
       path: "/admin",
       element: isLogged ? <Admin /> : <Navigate to="/loginAdmin" />
-    }
+    },
   ]);
 
   return <RouterProvider router={router} />

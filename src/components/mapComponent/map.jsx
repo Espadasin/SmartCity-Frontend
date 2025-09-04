@@ -14,6 +14,7 @@ import { MapPin,
 
 import db from '../../services/db.js';
 import location from '../../services/map.js';
+import axios from 'axios';
 
 
 function LocationMarker({ addingMarker, onMarkerPlaced }){

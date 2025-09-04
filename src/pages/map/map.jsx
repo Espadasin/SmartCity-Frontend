@@ -27,7 +27,7 @@ function Map() {
                     <button id="createFeedbackButton" onClick={() => setAddingMarker(true)}><Megaphone color="#0088cc" /> Reportar <br /> problema</button>
                     <div id="moreButtons">
                         <button id="adminButton" onClick={() => navigate("/loginAdmin")}><UserRound /></button>
-                        <button id="infoButton"><Info /></button>
+                        <button id="infoButton" onClick={() => navigate("/info")}><Info /></button>
                     </div>
             </section>
 

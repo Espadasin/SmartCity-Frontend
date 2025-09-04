@@ -31,7 +31,6 @@ function Login({setIsLogged, isAuth, userData}){
         }
 
         setIsLogged(true);
-        localStorage.setItem('token', response.data);
         navigate('/admin')
     }
 
