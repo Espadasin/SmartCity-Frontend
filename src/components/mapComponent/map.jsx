@@ -34,6 +34,8 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
             if (addingMarker) {
                 setPosition(e.latlng);
                 onMarkerPlaced();
+            }else{
+                setPosition(null);
             }
         },
     });
