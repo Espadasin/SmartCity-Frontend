@@ -24,7 +24,7 @@ function Map() {
             <p>Clique no botão "Reportar problema" para adicionar um novo marcador.</p>
 
             <section id="actions">
-                    <button id="createFeedbackButton" onClick={() => setAddingMarker(!addingMarker)}>{!addingMarker ? <><Megaphone color="#0088cc" /> Reportar <br /> problema</> : <><X color="#0088cc" /> Cancelar <br /> Problema</>}</button>
+                    <button id="createFeedbackButton" translate="no" onClick={() => setAddingMarker(!addingMarker)}>{!addingMarker ? <><Megaphone color="#0088cc" /> Reportar <br /> problema</> : <><X color="#0088cc" /> Cancelar <br /> Problema</>}</button>
                     <div id="moreButtons">
                         <button id="adminButton" onClick={() => navigate("/loginAdmin")}><UserRound /></button>
                         <button id="infoButton" onClick={() => navigate("/info")}><Info /></button>
