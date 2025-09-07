@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 let admin = axios.create({
-    baseURL: 'https://smartcity-backend.up.railway.app/admin'
+    baseURL: import.meta.env.VITE_BACKEND_URL + '/admin'
 });
 
 

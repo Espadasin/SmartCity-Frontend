@@ -27,6 +27,7 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
     const [position, setPosition] = useState(null);
     const [comment, setComment] = useState("");
     const [type, setType] = useState("Geral");
+    const [image, setImage] = useState(null);
     const popupRef = useRef();
 
     useMapEvents({
@@ -48,14 +49,25 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
 
     const handleSave = async () => {
         if (!position || !comment) return alert("Preencha todos os campos.");
-        await db.post("/postComment", {
-            latitude: position.lat,
-            longitude: position.lng,
-            commentary: comment,
-            type: type
-        });
+
+        const formData = new FormData();
+        formData.append("latitude", position.lat);
+        formData.append("longitude", position.lng);
+        formData.append("commentary", comment);
+        formData.append("type", type);
+        if (image) {
+            formData.append("image", image);
+        }
+
+        await db.post("/postComment", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+
         navigate(0);
         setComment("");
+        setImage(null);
     };
 
     return position ? (
@@ -68,6 +80,8 @@ function LocationMarker({ addingMarker, onMarkerPlaced }){
                     onChange={(e) => setComment(e.target.value)}
                     rows={3}
                 />
+                <label htmlFor="image">Imagem</label>
+                <input type="file" accept='image/*' name="image" id="image" onChange={(e) => setImage(e.target.files[0])} />
                 <label htmlFor="type">Tipo do Problema</label>
                 <select onChange={(e) => setType(e.target.value)} name="type" id="type" placeholder="Tipo do Problema">
                     <option value="Geral">Geral</option>
@@ -124,6 +138,7 @@ function MapComponent({ addingMarker }) {
         
         try{
             let response = await db.get('/getComments');
+            console.log(response.data)
             setData(response.data);
         }catch(error){
             console.log(error);
@@ -151,6 +166,7 @@ function MapComponent({ addingMarker }) {
                             <div className='popup'>
                                 {item.solved ? <span style={{color: 'green', fontWeight: 'bold'}}>RESOLVIDO</span> : <span style={{color: 'red', fontWeight: 'bold'}}>PENDENTE</span>}
                                 {item.commentary}   
+                                {item.image && <img src={import.meta.env.VITE_BACKEND_URL + item.image} alt="User upload" width={100}/>}
                             </div>
                         </Popup>
                     </Marker>

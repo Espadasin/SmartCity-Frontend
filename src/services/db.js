@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 let db = axios.create({
-    baseURL: 'https://smartcity-backend.up.railway.app'
+    baseURL: import.meta.env.VITE_BACKEND_URL
 });
 
 
