@@ -138,7 +138,6 @@ function MapComponent({ addingMarker }) {
         
         try{
             let response = await db.get('/getComments');
-            console.log(response.data)
             setData(response.data);
         }catch(error){
             console.log(error);
